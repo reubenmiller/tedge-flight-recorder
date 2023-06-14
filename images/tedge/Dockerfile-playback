@@ -1,0 +1,20 @@
+FROM ghcr.io/thin-edge/tedge-demo-main-systemd:20230517.2
+
+# Install additional dependencies
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
+        git \
+        jq \
+        curl \
+        python3-minimal \
+        python3-paho-mqtt
+
+COPY images/tedge/c8y-configuration-plugin.toml /etc/tedge/c8y/c8y-configuration-plugin.toml
+
+COPY images/tedge/tape-playback.service /lib/systemd/system/
+COPY images/tedge/tape-playback.py /usr/app/
+
+COPY testdata/cassette.tape /etc/tedge-tapedeck/cassette.tape
+COPY images/tedge/sony_hifi.json /etc/tedge-tapedeck/sony_hifi.json
+RUN systemctl enable tape-playback \
+    && systemctl disable collectd

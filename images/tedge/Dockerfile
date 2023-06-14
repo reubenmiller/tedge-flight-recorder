@@ -9,6 +9,10 @@ RUN apt-get update \
 
 COPY images/tedge/device-traffic.service /lib/systemd/system/
 COPY images/tedge/device_traffic.sh /usr/bin/
-RUN systemctl enable device-traffic.service
+RUN systemctl enable device-traffic.service \
+    && mkdir -p /etc/tedge-tapedeck \
+    && chown -R tedge:tedge /etc/tedge-tapedeck
+
+COPY images/tedge/c8y-configuration-plugin.toml /etc/tedge/c8y/c8y-configuration-plugin.toml
 
 COPY images/tedge/recorder /usr/bin/

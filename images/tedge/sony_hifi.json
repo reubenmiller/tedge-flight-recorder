@@ -1,0 +1,6 @@
+{
+    "playback": {
+        "speed": 1.0
+    },
+    "cassette": "/etc/tedge-tapedeck/cassette.tape"
+}

@@ -4,5 +4,8 @@ services:
     build:
       dockerfile: images/tedge/Dockerfile
     privileged: true
-    ports:
-      - 1880:1880
+
+  sony_hifi:
+    build:
+      dockerfile: images/tedge/Dockerfile-playback
+    privileged: true

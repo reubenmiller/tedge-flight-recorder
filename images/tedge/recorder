@@ -3,7 +3,7 @@ set -e
 
 MQTT_HOST=${MQTT_HOST:-localhost}
 MQTT_PORT=${MQTT_PORT:-1883}
-OUTPUT_LOGDIR=${OUTPUT_LOGDIR:-/var/log/recorder}
+OUTPUT_LOGDIR=${OUTPUT_LOGDIR:-/etc/tedge-tapedeck}
 MQTT_TIMEOUT=${MQTT_TIMEOUT:-20}
 WAIT=${WAIT:-1}
 
@@ -22,7 +22,7 @@ usage() {
         $0
         # Subscribe to the default mqtt broker on localhost:1883
 
-        $0 --log-dir /var/log/
+        $0 --log-dir /etc/tedge-tapedeck
         # Subscribe to all topics and write the messages to file
     "
 }
@@ -84,7 +84,7 @@ fi
 
 mkdir -p "$OUTPUT_LOGDIR"
 # OUTPUT_LOG=${OUTPUT_LOGDIR}/recorder-$(date +"%Y-%m-%dT%H:%M:%S%z").rec
-OUTPUT_LOG="${OUTPUT_LOGDIR}/recorder.rec"
+OUTPUT_LOG="${OUTPUT_LOGDIR}/cassette.tape"
 
 log "Starting mqtt-logger to ${MQTT_HOST}:${MQTT_PORT} to $OUTPUT_LOG"
 subscribe | tee "$OUTPUT_LOG" || true

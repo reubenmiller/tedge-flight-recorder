@@ -1,0 +1,13 @@
+[Unit]
+Description=Device traffic simulator so that the recorder has something to record :D
+After=mosquitto.service
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/app/tape-playback.py /etc/tedge-tapedeck/cassette.tape 1.0
+User=tedge
+Restart=always
+RestartSec=30
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

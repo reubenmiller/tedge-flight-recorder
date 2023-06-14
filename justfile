@@ -15,10 +15,17 @@ down-all:
 # Configure and register the device to the cloud
 bootstrap *args="--no-prompt":
     docker compose exec --env "DEVICE_ID=${DEVICE_ID:-}" --env "C8Y_BASEURL=${C8Y_BASEURL:-}" --env "C8Y_USER=${C8Y_USER:-}" --env "C8Y_PASSWORD=${C8Y_PASSWORD:-}" tedge bootstrap.sh {{args}}
+    docker compose exec --env "DEVICE_ID=${DEVICE_ID:-}_simulator" --env "C8Y_BASEURL=${C8Y_BASEURL:-}" --env "C8Y_USER=${C8Y_USER:-}" --env "C8Y_PASSWORD=${C8Y_PASSWORD:-}" sony_hifi bootstrap.sh {{args}}
+
+bootstrap-sony *args="--no-prompt":
+    docker compose exec --env "DEVICE_ID=${DEVICE_ID:-}_simulator" --env "C8Y_BASEURL=${C8Y_BASEURL:-}" --env "C8Y_USER=${C8Y_USER:-}" --env "C8Y_PASSWORD=${C8Y_PASSWORD:-}" sony_hifi bootstrap.sh {{args}}
 
 # Start a shell
 shell *args='bash':
     docker compose exec tedge {{args}}
+
+shell-replay *args='bash':
+    docker compose exec sony_hifi {{args}}
 
 # Show logs of the main device
 logs *args='':
