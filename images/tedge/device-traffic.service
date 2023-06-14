@@ -1,0 +1,13 @@
+[Unit]
+Description=Device traffic simulator so that the recorder has something to record :D
+After=mosquitto.service
+
+[Service]
+ExecStart=/usr/bin/device_traffic.sh
+User=tedge
+Restart=always
+RestartSec=30
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
