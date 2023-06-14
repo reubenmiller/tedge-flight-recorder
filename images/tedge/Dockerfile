@@ -10,3 +10,5 @@ RUN apt-get update \
 COPY images/tedge/device-traffic.service /lib/systemd/system/
 COPY images/tedge/device_traffic.sh /usr/bin/
 RUN systemctl enable device-traffic.service
+
+COPY images/tedge/recorder /usr/bin/
