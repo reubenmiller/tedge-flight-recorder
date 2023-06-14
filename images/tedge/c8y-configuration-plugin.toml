@@ -5,5 +5,5 @@ files = [
     { path = '/etc/collectd/collectd.conf', type = 'collectd.conf', user = 'root', group = 'root', mode = 0o644 },
     { path = '/etc/c8y-command-plugin/env', type = 'shell', user = 'tedge', group = 'tedge', mode = 0o644 },
     { path = '/etc/tedge-tapedeck/cassette.tape', type = 'cassette', user = 'tedge', group = 'tedge', mode = 0o644 },
-    { path = '/etc/tedge-tapedeck/casio.ini', type = 'casio.ini', user = 'tedge', group = 'tedge', mode = 0o644 },
+    { path = '/etc/tedge-tapedeck/sony_hifi.json', type = 'sony_hifi.json', user = 'tedge', group = 'tedge', mode = 0o644 },
 ]

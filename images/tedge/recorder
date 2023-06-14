@@ -67,7 +67,7 @@ log() {
 }
 
 subscribe() {
-    mosquitto_sub --nodelay -h "$MQTT_HOST" -p "$MQTT_PORT" -W "$MQTT_TIMEOUT" -t '#' -F '{"timestamp":%U,"message":%j,"payload_hex":"%x"}' ||:
+    mosquitto_sub --nodelay -h "$MQTT_HOST" -p "$MQTT_PORT" -W "$MQTT_TIMEOUT" -t 'tedge/#' -F '{"timestamp":%U,"message":%j,"payload_hex":"%x"}' ||:
 }
 
 # Wait for mosquitto process to start up (to reduce spamming logs with uninteresting info)
