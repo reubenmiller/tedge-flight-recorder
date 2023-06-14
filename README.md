@@ -3,6 +3,14 @@ Hackathon topic: record tedge mqtt messages and replay them
 
 ## Getting started
 
+**Pre-requisites**
+
+To be able to run this example you need the following:
+
+* [just](https://just.systems/man/en/chapter_5.html)
+* docker
+* docker compose (v2)
+
 ### Starting the device where the recording will be done against
 
 1. Checkout the repository
